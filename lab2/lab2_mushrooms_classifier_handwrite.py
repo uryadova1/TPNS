@@ -7,7 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # матрица ошибок
 
-from perceptronClass import MushroomClassifier
+from perceptronClass import Classifier
 
 # Загрузка данных
 column_names = ["class",
@@ -34,14 +34,6 @@ column_names = ["class",
                 "population",
                 "habitat"]
 df = pd.read_csv("../agaricus-lepiota.data", names=column_names)
-# print(df.nunique())
-#
-# cleaned_df = df.dropna()
-# print(cleaned_df.describe())
-
-# print(df.head())
-# print(df.info())
-# print(df.isnull().sum())
 
 df['stalk-root'] = df['stalk-root'].replace('?', 0)
 X = df.drop('class', axis=1)
@@ -74,7 +66,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 input_size = X_train.shape[1]
 # print(f"input size: {input_size}")
-model = MushroomClassifier(input_size, [128, 128], learning_rate=0.005, epochs=200)
+model = Classifier(input_size, [64, 64], learning_rate=0.005, epochs=30)
 model.train(X_train, y_train)
 
 y_pred = model.predict(X_test)
