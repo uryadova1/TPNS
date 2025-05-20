@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class GRU:
     def __init__(self, input_size, hidden_size):
         self.hidden_size = hidden_size
