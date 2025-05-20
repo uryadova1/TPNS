@@ -39,7 +39,6 @@ def col2im(col, input_shape, filter_h, filter_w, stride=1, pad=0):
     return img[:, :, pad:H + pad, pad:W + pad]
 
 
-
 class Conv2D:
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, pad=0):
         self.k = kernel_size

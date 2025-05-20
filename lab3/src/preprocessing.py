@@ -7,13 +7,12 @@ import matplotlib.pyplot as plt
 def create_sequences(data, window_size=10):
     X, y = [], []
     for i in range(len(data) - window_size):
-        X.append(data[i:i+window_size])
-        y.append(data[i+window_size])
+        X.append(data[i:i + window_size])
+        y.append(data[i + window_size])
     return np.array(X), np.array(y)
 
 
 def preprocessing(split_ratio=0.8):
-
     df = pd.read_csv(
         "household_power_consumption.csv",
         sep=';',
@@ -32,7 +31,6 @@ def preprocessing(split_ratio=0.8):
                     'Global_intensity', 'Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3']
     df[numeric_cols] = df[numeric_cols].astype(float)
 
-
     # print(df.head())
 
     series = df['Global_active_power'].values
@@ -44,4 +42,3 @@ def preprocessing(split_ratio=0.8):
 
     split = int(len(X) * split_ratio)
     return X[:split], y[:split], X[split:], y[split:]
-
