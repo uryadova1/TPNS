@@ -146,19 +146,6 @@ def train_model(model):
     plt.show()
 
 
-def print_image_console(image):
-    for row in image:
-        print("".join('#' if pixel > 127 else '.' for pixel in row))
-
-
-def save_images(images, labels, prefix='train', limit=100):
-    os.makedirs('images', exist_ok=True)
-    for i in range(min(len(images), limit)):
-        img = Image.fromarray(images[i])
-        img = img.convert("L")
-        img.save(f"images/{prefix}-{i:05d}-{labels[i]}.png")
-
-
 def load_images(filename):
     with gzip.open(filename, 'rb') as f:
         magic, num, rows, cols = struct.unpack(">IIII", f.read(16))
@@ -177,9 +164,6 @@ train_images = load_images('train-images-idx3-ubyte.gz')
 
 train_labels = load_labels('train-labels-idx1-ubyte.gz')
 
-# print_image_console(train_images[2])
-#
-# save_images(train_images, train_labels, 'train', limit=10)
 
 model = LeNet5()
 

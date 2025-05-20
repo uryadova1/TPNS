@@ -39,55 +39,6 @@ def col2im(col, input_shape, filter_h, filter_w, stride=1, pad=0):
     return img[:, :, pad:H + pad, pad:W + pad]
 
 
-# class Conv2D:
-#     def __init__(self, in_channels, out_channels, kernel_size):
-#         self.k = kernel_size
-#         self.weights = np.random.randn(out_channels, in_channels, kernel_size, kernel_size) * 0.1
-#         self.biases = np.zeros((out_channels, 1))
-#
-#     def forward(self, x):
-#         self.input = x
-#         batch_size, in_c, h, w = x.shape
-#         out_c, _, k, _ = self.weights.shape
-#         out_h = h - k + 1
-#         out_w = w - k + 1
-#         self.output = np.zeros((batch_size, out_c, out_h, out_w))
-#
-#         for i in range(batch_size):
-#             for oc in range(out_c):
-#                 for ic in range(in_c):
-#                     for y in range(out_h):
-#                         for x_ in range(out_w):
-#                             self.output[i, oc, y, x_] += np.sum(
-#                                 x[i, ic, y:y + k, x_:x_ + k] * self.weights[oc, ic]
-#                             )
-#                 self.output[i, oc] += self.biases[oc]
-#         return self.output
-#
-#     def backward(self, d_out, lr):
-#         batch_size, in_c, h, w = self.input.shape
-#         out_c, _, k, _ = self.weights.shape
-#         d_input = np.zeros_like(self.input)
-#         d_weights = np.zeros_like(self.weights)
-#         d_biases = np.zeros_like(self.biases)
-#
-#         for i in range(batch_size):
-#             for oc in range(out_c):
-#                 for ic in range(in_c):
-#                     for y in range(h - k + 1):
-#                         for x_ in range(w - k + 1):
-#                             d_weights[oc, ic] += (
-#                                     self.input[i, ic, y:y + k, x_:x_ + k] * d_out[i, oc, y, x_]
-#                             )
-#                             d_input[i, ic, y:y + k, x_:x_ + k] += (
-#                                     self.weights[oc, ic] * d_out[i, oc, y, x_]
-#                             )
-#                 d_biases[oc] += np.sum(d_out[i, oc])
-#
-#         self.weights -= lr * d_weights
-#         self.biases -= lr * d_biases
-#         return d_input
-
 
 class Conv2D:
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, pad=0):
