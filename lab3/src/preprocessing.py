@@ -31,8 +31,6 @@ def preprocessing(split_ratio=0.8):
                     'Global_intensity', 'Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3']
     df[numeric_cols] = df[numeric_cols].astype(float)
 
-    # print(df.head())
-
     series = df['Global_active_power'].values
 
     window_size = 20

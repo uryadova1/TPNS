@@ -47,7 +47,6 @@ def train_and_evaluate(cell_type):
             optimizer.step()
         print(f"[{cell_type}] Epoch {epoch + 1}: Loss = {loss.item():.4f}")
 
-    # Тест
     model.eval()
     with torch.no_grad():
         preds = model(X_test).numpy()
@@ -69,7 +68,6 @@ for cell in ['RNN', 'GRU', 'LSTM']:
     # plt.plot(preds[:200], label="Предсказания")
     # plt.legend()
     # plt.show()
-
 
 plt.figure(figsize=(12, 6))
 plt.title("Сравнение предсказаний моделей")
