@@ -14,7 +14,6 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 
-
 class LeNet5(nn.Module):
     def __init__(self):
         super(LeNet5, self).__init__()
@@ -34,6 +33,7 @@ class LeNet5(nn.Module):
         x = self.fc3(x)
         return x
 
+
 def plot_confusion_matrix(model):
     all_preds = []
     all_labels = []
@@ -50,6 +50,7 @@ def plot_confusion_matrix(model):
     disp.plot(cmap='Blues')
     plt.title("Confusion Matrix")
     plt.show()
+
 
 def evaluate(model, test_loader):
     model.eval()
@@ -163,7 +164,6 @@ def load_labels(filename):
 train_images = load_images('train-images-idx3-ubyte.gz')
 
 train_labels = load_labels('train-labels-idx1-ubyte.gz')
-
 
 model = LeNet5()
 
