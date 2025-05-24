@@ -63,12 +63,6 @@ for cell in ['RNN', 'GRU', 'LSTM']:
     preds, actual, rmse = train_and_evaluate(cell)
     results[cell] = (preds, actual, rmse)
 
-    # plt.figure(figsize=(10, 4))
-    # plt.title(f"{cell} — предсказание vs реальные")
-    # plt.plot(actual[:200], label="Реальные")
-    # plt.plot(preds[:200], label="Предсказания")
-    # plt.legend()
-    # plt.show()
 
 
 plt.figure(figsize=(12, 6))
