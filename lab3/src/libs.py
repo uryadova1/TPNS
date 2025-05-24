@@ -47,7 +47,6 @@ def train_and_evaluate(cell_type):
             optimizer.step()
         print(f"[{cell_type}] Epoch {epoch + 1}: Loss = {loss.item():.4f}")
 
-    # Тест
     model.eval()
     with torch.no_grad():
         preds = model(X_test).numpy()
@@ -62,7 +61,6 @@ results = {}
 for cell in ['RNN', 'GRU', 'LSTM']:
     preds, actual, rmse = train_and_evaluate(cell)
     results[cell] = (preds, actual, rmse)
-
 
 
 plt.figure(figsize=(12, 6))
