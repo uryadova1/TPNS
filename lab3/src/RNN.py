@@ -14,10 +14,6 @@ class RNN:
         self.by = np.zeros((output_size, 1))
 
     def forward(self, inputs):
-        """
-        inputs: shape (batch_size, time_steps, input_size)
-        returns: predictions shape (batch_size, output_size)
-        """
         batch_size, time_steps, input_size = inputs.shape
         self.last_inputs = inputs
         self.h_states = [np.zeros((batch_size, self.hidden_size))]
@@ -36,10 +32,6 @@ class RNN:
         return y
 
     def backward(self, inputs, targets, learning_rate=0.001):
-        """
-        inputs: shape (batch_size, time_steps, input_size)
-        targets: shape (batch_size, output_size)
-        """
         batch_size, time_steps, input_size = inputs.shape
 
         dWxh = np.zeros_like(self.Wxh)

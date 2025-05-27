@@ -26,10 +26,6 @@ class LSTM:
         return np.tanh(np.clip(x, -500, 500))
 
     def forward(self, inputs):
-        """
-        inputs: (batch_size, time_steps, input_size)
-        returns: output predictions (batch_size, output_size)
-        """
         batch_size, time_steps, _ = inputs.shape
         h = np.zeros((batch_size, self.hidden_size))
         c = np.zeros((batch_size, self.hidden_size))
